@@ -9,7 +9,7 @@ def roman_to_int(roman_string):
         if digits.get(r) is None:
             return 0
         num = digits[r]
-        if total > num * 5:
+        if total >= num * 5:
             num = -num
         total += num
     return total
