@@ -7,6 +7,7 @@ def list_division(my_list_1, my_list_2, list_length):
             res = my_list_1[i] / my_list_2[i]
         except (ZeroDivisionError, TypeError, IndexError):
             res = 0
-        ret.append(res)
+        finally:
+            ret.append(res)
         i += 1
     return ret
