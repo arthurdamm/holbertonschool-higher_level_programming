@@ -16,7 +16,7 @@ void print_python_float(PyObject *p)
 		return;
 	}
     double d = ((PyFloatObject *)p)->ob_fval;
-    if (d - (long int)d == 0)
+    if (d - (long int) d <= .1)
         printf("  value: %.1f\n", d);
     else    
 	   printf("  value: %.16g\n", d);
