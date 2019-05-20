@@ -9,5 +9,5 @@ def list_division(my_list_1, my_list_2, list_length):
             res = 0
         finally:
             ret.append(res)
-        i += 1
+            i += 1
     return ret
