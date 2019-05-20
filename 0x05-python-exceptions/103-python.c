@@ -15,7 +15,11 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	printf("  value: %f\n", ((PyFloatObject *)p)->ob_fval);
+    double d = ((PyFloatObject *)p)->ob_fval;
+    if (d - (int)d == 0)
+        printf("  value: %.1f\n", d);
+    else    
+	   printf("  value: %.16g\n", d);
 }
 
 /**
