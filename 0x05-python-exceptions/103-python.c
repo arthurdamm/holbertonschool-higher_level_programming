@@ -19,7 +19,7 @@ void print_python_float(PyObject *p)
 		return;
 	}
     d = ((PyFloatObject *)p)->ob_fval;
-    if (d - (long int) d <= .1)
+    if (d - (long int) d == 0)
         printf("  value: %.1f\n", d);
     else    
 	   printf("  value: %s\n", PyOS_double_to_string(d, 'r', 0, 0, NULL));
