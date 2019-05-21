@@ -19,10 +19,8 @@ void print_python_float(PyObject *p)
 		return;
 	}
     d = ((PyFloatObject *)p)->ob_fval;
-    if (d - (long int) d == 0)
-        printf("  value: %.1f\n", d);
-    else    
-	   printf("  value: %s\n", PyOS_double_to_string(d, 'r', 0, 0, NULL));
+	printf("  value: %s\n",
+        PyOS_double_to_string(d, 'r', 0, Py_DTSF_ADD_DOT_0, NULL));
 }
 
 /**
@@ -45,11 +43,7 @@ void print_python_bytes(PyObject *p)
 	str = ((PyBytesObject *)p)->ob_sval;
 	len =  size + 1 > 10 ? 10 : size + 1;
 	printf("  size: %lu\n", size);
-	/* printf("  trying string: %s\n", str); */
-    printf("  trying string: ");
-    for (i = 0; str[i]; i++)
-        printf("%c", str[i]);
-    printf("\n");
+	printf("  trying string: %s\n", str);
 	printf("  first %lu bytes: ", len);
 	for (i = 0; i < len; i++)
 		printf("%02hhx%s", str[i], i + 1 < len ? " " : "");
