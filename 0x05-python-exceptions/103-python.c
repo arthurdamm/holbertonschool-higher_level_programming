@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <Python.h>
+#include <floatobject.h>
 
 /**
  * print_python_float - prints info about python float
@@ -8,6 +9,8 @@
  */
 void print_python_float(PyObject *p)
 {
+    double d;
+
 	setbuf(stdout, NULL);
 	printf("[.] float object info\n");
 	if (strcmp(p->ob_type->tp_name, "float"))
@@ -15,11 +18,11 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-    double d = ((PyFloatObject *)p)->ob_fval;
+    d = ((PyFloatObject *)p)->ob_fval;
     if (d - (long int) d <= .1)
         printf("  value: %.1f\n", d);
     else    
-	   printf("  value: %.16g\n", d);
+	   printf("  value: %s\n", PyOS_double_to_string(d, 'r', 0, 0, NULL));
 }
 
 /**
@@ -42,7 +45,11 @@ void print_python_bytes(PyObject *p)
 	str = ((PyBytesObject *)p)->ob_sval;
 	len =  size + 1 > 10 ? 10 : size + 1;
 	printf("  size: %lu\n", size);
-	printf("  trying string: %s\n", str);
+	/* printf("  trying string: %s\n", str); */
+    printf("  trying string: ");
+    for (i = 0; str[i]; i++)
+        printf("%c", str[i]);
+    printf("\n");
 	printf("  first %lu bytes: ", len);
 	for (i = 0; i < len; i++)
 		printf("%02hhx%s", str[i], i + 1 < len ? " " : "");
