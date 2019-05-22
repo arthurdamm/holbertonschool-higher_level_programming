@@ -7,7 +7,7 @@ class Square:
 
     def __str__(self):
         """Returns string representation."""
-        return self.my_sprint()
+        return self.my_sprint()[:-1]
 
     def __init__(self, size=0, position=(0, 0)):
         """Constructor.
