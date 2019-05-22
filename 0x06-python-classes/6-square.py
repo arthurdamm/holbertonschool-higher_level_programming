@@ -5,6 +5,9 @@
 class Square:
     """Defines a square."""
 
+    def __str__(self):
+        self.my_print()
+
     def __init__(self, size=0, position=(0, 0)):
         """Constructor.
 
@@ -57,14 +60,22 @@ class Square:
         """
         return self.__size ** 2
 
-    def my_print(self):
-        """Prints this square."""
-        if self.size:
-            for i in range(self.position[1]):
-                print()
+    def my_sprint(self):
+        """Returns string representation of this square."""
+        ret = ""
+        if not self.size:
+            return "\n"
+
+        for i in range(self.position[1]):
+                ret += "\n"
         for i in range(self.size):
             for j in range(self.position[0]):
-                print(" ", end="")
+                ret += " "
             for j in range(self.size):
-                print("#", end="\n" if j is self.size - 1 and i != j else "")
-        print()
+                ret += "#"
+            ret += "\n"
+        return ret
+
+    def my_print(self):
+        """Prints this square."""
+        print(self.my_sprint(), end="")
