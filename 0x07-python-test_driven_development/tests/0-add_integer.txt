@@ -107,4 +107,7 @@ Test two strings:
 
 Test float overflow:
     >>> add_integer(float('inf'), 0)
-    inf
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+    
