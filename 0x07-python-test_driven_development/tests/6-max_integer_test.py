@@ -229,6 +229,11 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer(None)
 
+    def test_dict(self):
+        """Unittest for max_integer([..])"""
+        with self.assertRaises(TypeError):
+            max_integer([{20: 23, 14: 45}, {"a": "b"}])
+
     def test_int(self):
         """Unittest for max_integer([..])"""
         with self.assertRaises(TypeError):
