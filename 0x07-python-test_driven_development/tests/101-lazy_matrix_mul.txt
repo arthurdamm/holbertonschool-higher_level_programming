@@ -54,13 +54,13 @@ Test string arg:
     >>> lazy_matrix_mul("foo", [[9]])
     Traceback (most recent call last):
     ...
-    ValueError: malformed node or string: <_ast.Name object at 0x10b407a20>
+    TypeError: m_a should contain only integers or floats
 
 Test string arg:
     >>> lazy_matrix_mul([[8]], "bar")
     Traceback (most recent call last):
     ...
-    TypeError: m_b must be a list
+    TypeError: m_b should contain only integers or floats
 
 Test int list:
     >>> lazy_matrix_mul([1, 3, 4], [[9]])
@@ -77,25 +77,25 @@ Test notnum list:
     >>> lazy_matrix_mul([["foo"]], [[2, 4, 6]])
     Traceback (most recent call last):
     ...
-    ValueError: data type must provide an itemsize
+    TypeError: m_a should contain only integers or floats
 
 Test notnum list 2 :
     >>> lazy_matrix_mul([[2, 4, 6]], [["foo"]])
     Traceback (most recent call last):
     ...
-    ValueError: shapes (1,3) and (1,1) not aligned: 3 (dim 1) != 1 (dim 0)
+    TypeError: m_b should contain only integers or floats
 
 Test a bad rows:
     >>> lazy_matrix_mul([[1, 2], [3, 4, 5], [3, 4]], [[5, 6, 1], [7, 8, 2]])
     Traceback (most recent call last):
     ...
-    ValueError: shapes (1,3) and (2,3) not aligned: 3 (dim 1) != 2 (dim 0)
+    TypeError: each row of m_a must should be of the same size
 
 Test b bad rows:
     >>> lazy_matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 2]])
     Traceback (most recent call last):
     ...
-    ValueError: shapes (3,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+    TypeError: each row of m_b must should be of the same size
 
 Test missing 1 arg:
     >>> lazy_matrix_mul([[3]])
@@ -108,3 +108,9 @@ Test missing 2 args:
     Traceback (most recent call last):
     ...
     TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test this
+    >>> lazy_matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
+    Traceback (most recent call last):
+    ...
+    TypeError: each row of m_a must should be of the same size
