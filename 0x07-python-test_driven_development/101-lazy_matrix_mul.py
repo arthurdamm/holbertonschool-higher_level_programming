@@ -79,7 +79,7 @@ def lazy_matrix_mul(m_a, m_b):
                 c += m_a[i][k] * m_b[k][j]
             res[i].append(c)
     '''
-    return (numpy.matrix(m_a) * numpy.matrix(m_b)).tolist()
+    return numpy.matrix(m_a) * numpy.matrix(m_b)
 
 if __name__ == "__main__":
     import doctest
