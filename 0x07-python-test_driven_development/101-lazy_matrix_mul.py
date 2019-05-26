@@ -67,10 +67,10 @@ def lazy_matrix_mul(m_a, m_b):
         raise TypeError("Scalar operands are not allowed, use '*' instead")
 
     if m_a_notnum:
-        raise TypeError("TypeError: invalid data type for einsum")
+        raise TypeError("invalid data type for einsum")
 
     if m_b_notnum:
-        raise TypeError("TypeError: invalid data type for einsum")
+        raise TypeError("invalid data type for einsum")
 
     if m_a_notrect:
         raise TypeError("each row of m_a must should be of the same size")
