@@ -32,9 +32,11 @@ def lazy_matrix_mul(m_a, m_b):
     m_b_notrect = False
     m_a_notnum = False
     m_b_notnum = False
+    m_a_scalar = False
+    m_b_scalar = False
     for row in m_a:
         if not isinstance(row, list):
-            pass  # raise TypeError("m_a must be a list of lists")
+            m_a_scalar = True
         if len(row) != len(m_a[0]):
             m_a_notrect = True
         for num in row:
@@ -43,7 +45,7 @@ def lazy_matrix_mul(m_a, m_b):
 
     for row in m_b:
         if not isinstance(row, list):
-            pass  # raise TypeError("m_b must be a list of lists")
+            m_b_scalar = True
         if len(row) != len(m_b[0]):
             m_b_notrect = True
         for num in row:
@@ -58,11 +60,17 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
     '''
 
-    if m_a_notnum:
+    if m_a_scalar:
         raise TypeError("Scalar operands are not allowed, use '*' instead")
 
-    if m_b_notnum:
+    if m_b_scalar:
         raise TypeError("Scalar operands are not allowed, use '*' instead")
+
+    if m_a_notnum:
+        raise TypeError("TypeError: invalid data type for einsum")
+
+    if m_b_notnum:
+        raise TypeError("TypeError: invalid data type for einsum")
 
     if m_a_notrect:
         raise TypeError("each row of m_a must should be of the same size")
