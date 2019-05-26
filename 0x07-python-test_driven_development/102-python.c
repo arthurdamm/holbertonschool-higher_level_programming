@@ -13,8 +13,8 @@ void print_python_string(PyObject *p)
 {
 	wchar_t *wstr;
 
+	setlocale(LC_CTYPE,"UTF-8");
     fflush(stdout);
- 	
 	printf("[.] string object info\n");
 	if (strcmp(p->ob_type->tp_name, "str"))
 	{
