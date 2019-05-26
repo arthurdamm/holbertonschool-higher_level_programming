@@ -73,10 +73,10 @@ def lazy_matrix_mul(m_a, m_b):
         raise TypeError("invalid data type for einsum")
 
     if m_a_notrect:
-        raise TypeError("each row of m_a must should be of the same size")
+        raise ValueError("setting an array element with a sequence.")
 
     if m_b_notrect:
-        raise TypeError("each row of m_b must should be of the same size")
+        raise ValueError("setting an array element with a sequence.")
 
     '''
     if len(m_a[0]) != len(m_b):
