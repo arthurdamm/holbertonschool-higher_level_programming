@@ -66,36 +66,39 @@ Test int list:
     >>> lazy_matrix_mul([1, 3, 4], [[9]])
     Traceback (most recent call last):
     ...
-    ValueError: shapes (1,3) and (1,1) not aligned: 3 (dim 1) != 1 (dim 0)
+    TypeError: object of type 'int' has no len()
 
 Test int list 2:
 SHOULD BE ERROR
     >>> lazy_matrix_mul([[8]], [2, 4, 6])
-    matrix([[16, 32, 48]])
+    Traceback (most recent call last):
+    ...
+    TypeError: object of type 'int' has no len()
+
 
 Test notnum list:
     >>> lazy_matrix_mul([["foo"]], [[2, 4, 6]])
     Traceback (most recent call last):
     ...
-    TypeError: TypeError: invalid data type for einsum
+    TypeError: invalid data type for einsum
 
 Test notnum list 2 :
     >>> lazy_matrix_mul([[2, 4, 6]], [["foo"]])
     Traceback (most recent call last):
     ...
-    TypeError: TypeError: invalid data type for einsum
+    TypeError: invalid data type for einsum
 
 Test a bad rows:
     >>> lazy_matrix_mul([[1, 2], [3, 4, 5], [3, 4]], [[5, 6, 1], [7, 8, 2]])
     Traceback (most recent call last):
     ...
-    TypeError: each row of m_a must should be of the same size
+    ValueError: setting an array element with a sequence.
 
 Test b bad rows:
     >>> lazy_matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 2]])
     Traceback (most recent call last):
     ...
-    TypeError: each row of m_b must should be of the same size
+    ValueError: setting an array element with a sequence.
 
 Test missing 1 arg:
     >>> lazy_matrix_mul([[3]])
@@ -113,13 +116,13 @@ Test this
     >>> lazy_matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
     Traceback (most recent call last):
     ...
-    TypeError: each row of m_a must should be of the same size
+    ValueError: setting an array element with a sequence.
 
 String element:
     >>> lazy_matrix_mul([[5, '6'], [7, 8]], [[5, 6], [7, 8]])
     Traceback (most recent call last):
     ...
-    TypeError: TypeError: invalid data type for einsum
+    TypeError: invalid data type for einsum
 
 
 Test string arg:
