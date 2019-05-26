@@ -6,6 +6,11 @@ Using ``lazy_lazy_matrix_mul``
 
 Import module:
     >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+    
+Test simply:
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    matrix([[19, 22],
+            [43, 50]])
 
 Test 2 bad matrices:
     >>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
@@ -15,7 +20,9 @@ Test 2 bad matrices:
 
 Test 2 ok matrices:
     >>> lazy_matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 8, 2]])
-    [[19, 22, 5], [43, 50, 11], [43, 50, 11]]
+    matrix([[19, 22,  5],
+            [43, 50, 11],
+            [43, 50, 11]])
 
 Test singly empty matrix:
     >>> lazy_matrix_mul([], [[3]])
@@ -32,16 +39,16 @@ Test singly empty matrix:
 Test singly empty matrix 2:
 SHOULD BE ERROR
     >>> lazy_matrix_mul([[4]], [])
-    [[]]
+    matrix([], shape=(1, 0), dtype=float64)
 
 Test doubly empty matrix:
 SHOULD BE ERROR
     >>> lazy_matrix_mul([[3]], [[]])
-    [[]]
+    matrix([], shape=(1, 0), dtype=float64)
 
 Test simple case:
     >>> lazy_matrix_mul([[3]], [[9]])
-    [[27]]
+    matrix([[27]])
 
 Test string arg:
     >>> lazy_matrix_mul("foo", [[9]])
@@ -64,7 +71,7 @@ Test int list:
 Test int list 2:
 SHOULD BE ERROR
     >>> lazy_matrix_mul([[8]], [2, 4, 6])
-    [[16, 32, 48]]
+    matrix([[16, 32, 48]])
 
 Test notnum list:
     >>> lazy_matrix_mul([["foo"]], [[2, 4, 6]])
