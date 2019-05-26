@@ -34,7 +34,7 @@ def lazy_matrix_mul(m_a, m_b):
     m_b_notnum = False
     for row in m_a:
         if not isinstance(row, list):
-            pass #raise TypeError("m_a must be a list of lists")
+            pass  # raise TypeError("m_a must be a list of lists")
         if len(row) != len(m_a[0]):
             m_a_notrect = True
         for num in row:
@@ -43,7 +43,7 @@ def lazy_matrix_mul(m_a, m_b):
 
     for row in m_b:
         if not isinstance(row, list):
-            pass #raise TypeError("m_b must be a list of lists")
+            pass  # raise TypeError("m_b must be a list of lists")
         if len(row) != len(m_b[0]):
             m_b_notrect = True
         for num in row:
@@ -59,10 +59,10 @@ def lazy_matrix_mul(m_a, m_b):
     '''
 
     if m_a_notnum:
-        raise TypeError("m_a should contain only integers or floats")
+        raise TypeError("Scalar operands are not allowed, use '*' instead")
 
     if m_b_notnum:
-        raise TypeError("m_b should contain only integers or floats")
+        raise TypeError("Scalar operands are not allowed, use '*' instead")
 
     if m_a_notrect:
         raise TypeError("each row of m_a must should be of the same size")
