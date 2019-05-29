@@ -111,4 +111,4 @@ class Rectangle:
         Args:
             size: the size of the new square.
         '''
-        return Rectangle(size, size)
+        return cls(size, size)
