@@ -8,14 +8,14 @@ Import function from module:
     >>> MyList = __import__('1-my_list').MyList
 
 Correct Type test:
-	>>> ml = MyList()
-	>>> type(ml) == MyList
-	True
+    >>> ml = MyList()
+    >>> type(ml) == MyList
+    True
 
 Correct Instance test:
-	>>> ml = MyList()
-	>>> isinstance(ml, list)
-	True
+    >>> ml = MyList()
+    >>> isinstance(ml, list)
+    True
 
 Empty list test:
     >>> ml = MyList()
