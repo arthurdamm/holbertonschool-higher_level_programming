@@ -86,11 +86,6 @@ integer_validator method None value:
     Traceback (most recent call last):
     TypeError: foo must be an integer
 
-integer_validator method None value:
-    >>> bg.integer_validator("foo", None)
-    Traceback (most recent call last):
-    TypeError: foo must be an integer
-
 integer_validator method 0 value:
     >>> bg.integer_validator("key", 0)
     Traceback (most recent call last):
@@ -106,3 +101,9 @@ integer_validator method ok value:
     
 integer_validator method ok value 2:
     >>> bg.integer_validator("key", 1)
+
+integer_validator method empty string:
+    >>> bg.integer_validator("", 1)
+
+integer_validator method empty string:
+    >>> bg.integer_validator(None, 1)
