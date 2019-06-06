@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module for read_lines method.'''
+'''Module for write_file method.'''
 
 
 def write_file(filename="", text=""):
