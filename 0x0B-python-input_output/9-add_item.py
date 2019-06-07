@@ -8,9 +8,11 @@ load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
 file = "add_item.json"
 json_list = []
-if os.path.exists(file):
+try:
     json_list = load_from_json_file(file)
-
+except:
+json_list = []
+    
 for i in range(1, len(sys.argv)):
     json_list.append(sys.argv[i])
 
