@@ -4,12 +4,8 @@
 
 def pascal_triangle(n):
     '''Method that solves pascal's triangle.'''
-    ret = [0 for i in range(n)]
-    # ret[0] = list_prev
+    rows = [[1 for j in range(i + 1)] for i in range(n)]
     for n in range(n):
-        list_curr = [1 for i in range(n + 1)]
         for i in range(n - 1):
-            list_curr[i + 1] = sum(list_prev[i:i + 2])
-        ret[n] = list_curr
-        list_prev = list_curr
-    return ret
+            rows[n][i + 1] = sum(rows[n - 1][i:i + 2])
+    return rows
