@@ -30,10 +30,10 @@ def print_stats():
 i = 1
 try:
     for line in sys.stdin:
-        print("LINE: ", line)
         check_match(line)
         if i % 10 == 0:
             print_stats()
         i += 1
 except KeyboardInterrupt:
     print_stats()
+    raise
