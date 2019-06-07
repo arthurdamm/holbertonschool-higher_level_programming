@@ -28,7 +28,7 @@ def print_stats():
         if codes[k]:
             print("{}: {}".format(k, codes[k]))
 i = 1
-while i < 10:
+while True:
     try:
         r = sys.stdin.readline()
         if r == "":
