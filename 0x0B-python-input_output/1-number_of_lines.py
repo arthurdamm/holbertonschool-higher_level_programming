@@ -7,6 +7,4 @@ def number_of_lines(filename=""):
     with open(filename, "r", encoding="utf-8") as f:
         lines = f.readlines()
         num = len(lines)
-        if lines[-1][-1] != "\n":
-            num -= 1
         return num
