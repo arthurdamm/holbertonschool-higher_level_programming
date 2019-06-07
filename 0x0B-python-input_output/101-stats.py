@@ -14,10 +14,13 @@ if __name__ == "__main__":
         match = rex.search(line)
         if not match:
             return
-        size[0] += int(match.group(4))
-        code = int(match.group(3))
-        if code in codes:
-            codes[code] += 1
+        try:
+            size[0] += int(match.group(4))
+            code = int(match.group(3))
+            if code in codes:
+                codes[code] += 1
+        except:
+            pass
 
     def print_stats():
         '''Prints accumulated statistics.'''
