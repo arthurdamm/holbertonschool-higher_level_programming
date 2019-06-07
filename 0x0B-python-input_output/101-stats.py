@@ -3,13 +3,11 @@
 import sys
 import re
 
-
-if __name__=="__main__":
+if __name__ == "__main__":
     size = [0]
     codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
     rex = re.compile(
         '(\S+) - \[([^]]+)\] "GET /projects/260 HTTP/1.1" (\d+) (\d+)\n')
-
 
     def check_match(line):
         '''Checks for regexp match in line.'''
@@ -20,7 +18,6 @@ if __name__=="__main__":
         code = int(match.group(3))
         if code in codes:
             codes[code] += 1
-
 
     def print_stats():
         '''Prints accumulated statistics.'''
