@@ -3,7 +3,7 @@
 import sys
 import re
 
-size = 0
+size = [0]
 codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 rex = re.compile(
     '(\S+) - \[([^]]+)\] "GET /projects/260 HTTP/1.1" (\d+) (\d+)\n')
@@ -11,11 +11,10 @@ rex = re.compile(
 
 def check_match(line):
     '''Checks for regexp match in line.'''
-    global size
     match = rex.search(line)
     if not match:
         return
-    size += int(match.group(4))
+    size[0] += int(match.group(4))
     code = int(match.group(3))
     if code in codes:
         codes[code] += 1
@@ -23,7 +22,7 @@ def check_match(line):
 
 def print_stats():
     '''Prints accumulated statistics.'''
-    print("File size: {}".format(size))
+    print("File size: {}".format(size[0]))
     for k in sorted(codes.keys()):
         if codes[k]:
             print("{}: {}".format(k, codes[k]))
