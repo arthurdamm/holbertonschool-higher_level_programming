@@ -20,11 +20,10 @@ class Base:
     def to_json_string(list_dictionaries):
         '''Jsonifies a dictionary.'''
         # check if is list of dictionaries?
-        if list_dictionaries is None or \
-           type(list_dictionaries) is list and \
-           not all([type(x) is dict for x in list_dictionaries]):
-           return "[]"
-        return json.dumps(list_dictionaries)
+        if list_dictionaries:
+            return json.dumps(list_dictionaries)
+        else:
+            return "[]"
 
     @staticmethod
     def from_json_string(json_string):
