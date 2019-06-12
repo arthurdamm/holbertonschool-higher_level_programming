@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''Module for Base class.'''
-import json
+from json import dumps, loads
 
 
 class Base:
@@ -21,14 +21,14 @@ class Base:
         '''Jsonifies a dictionary.'''
         # check if is list of dictionaries?
         if list_dictionaries:
-            return json.dumps(list_dictionaries)
+            return dumps(list_dictionaries)
         else:
             return "[]"
 
     @staticmethod
     def from_json_string(json_string):
         '''Unjsonifies a dictionary.'''
-        return json.loads(json_string)
+        return loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):
