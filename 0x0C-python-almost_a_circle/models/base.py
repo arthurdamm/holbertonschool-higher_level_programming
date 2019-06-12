@@ -18,8 +18,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        '''Jsonifies a dictionary.'''
-        # check if is list of dictionaries?
+        '''Jsonifies a dictionary so it's quite rightly and longer.'''
         if list_dictionaries:
             return dumps(list_dictionaries)
         else:
