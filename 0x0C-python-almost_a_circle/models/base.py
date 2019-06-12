@@ -21,7 +21,7 @@ class Base:
         '''Jsonifies a dictionary.'''
         # check if is list of dictionaries?
         if list_dictionaries is None or \
-           type(list_dictionaries) is dict and len(list_dictionaries) is 0:
+           type(list_dictionaries) is list and len(list_dictionaries) is 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
