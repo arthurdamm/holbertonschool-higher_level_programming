@@ -11,6 +11,7 @@ class TestBase(unittest.TestCase):
 
     def setUp(self):
         '''Imports module, instantiates class'''
+        Base._Base__nb_objects = 0
         pass
 
     def tearDown(self):
@@ -122,6 +123,40 @@ were given"
         self.assertEqual(Base.to_json_string(d),
                          '[{}, {}]')
 
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        dictionary = str([dictionary])
+        dictionary = dictionary.replace("'", '"')
+        self.assertEqual(dictionary, json_dictionary)
+
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(1, 2, 3, 4)
+        r3 = Rectangle(2, 3, 4, 5)
+        dictionary = [r1.to_dictionary(), r2.to_dictionary(),
+                      r3.to_dictionary()]
+        json_dictionary = Base.to_json_string(dictionary)
+        dictionary = str(dictionary)
+        dictionary = dictionary.replace("'", '"')
+        self.assertEqual(dictionary, json_dictionary)
+
+        r1 = Square(10, 7, 2)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        dictionary = str([dictionary])
+        dictionary = dictionary.replace("'", '"')
+        self.assertEqual(dictionary, json_dictionary)
+
+        r1 = Square(10, 7, 2)
+        r2 = Square(1, 2, 3)
+        r3 = Square(2, 3, 4)
+        dictionary = [r1.to_dictionary(), r2.to_dictionary(),
+                      r3.to_dictionary()]
+        json_dictionary = Base.to_json_string(dictionary)
+        dictionary = str(dictionary)
+        dictionary = dictionary.replace("'", '"')
+        self.assertEqual(dictionary, json_dictionary)
+
     # ----------------- Tests for #17 ------------------------
     def test_H_test_from_json_string(self):
         '''Tests to_json_string() signature:'''
@@ -166,6 +201,14 @@ were given"
 "height": 34340}]'
         self.assertEqual(Base.from_json_string(s), d)
 
+        list_in = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        list_out = Rectangle.from_json_string(
+            Rectangle.to_json_string(list_in))
+        self.assertEqual(list_in, list_out)
+
         # ----------------- Tests for #16 ------------------------
     def test_I_save_to_file(self):
         '''Tests save_to_file() method.'''
@@ -186,7 +229,7 @@ were given"
         self.assertFalse(r1 is r2)
         self.assertFalse(r1 == r2)
 
-        # ----------------- Tests for #18 ------------------------
+        # ----------------- Tests for #19 ------------------------
     def test_K_load_from_file(self):
         '''Tests load_from_file() method.'''
         r1 = Rectangle(10, 7, 2, 8)
