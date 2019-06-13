@@ -54,6 +54,41 @@ were given"
              '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 1}
         self.assertDictEqual(r.__dict__, d)
 
+        with self.assertRaises(TypeError) as e:
+            r = Square("1")
+        msg = "width must be an integer"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(TypeError) as e:
+            r = Square(1, "2")
+        msg = "x must be an integer"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(TypeError) as e:
+            r = Square(1, 2, "3")
+        msg = "y must be an integer"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(ValueError) as e:
+            r = Square(-1)
+        msg = "width must be > 0"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(ValueError) as e:
+            r = Square(1, -2)
+        msg = "x must be >= 0"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(ValueError) as e:
+            r = Square(1, 2, -3)
+        msg = "y must be >= 0"
+        self.assertEqual(str(e.exception), msg)
+
+        with self.assertRaises(ValueError) as e:
+            r = Square(0)
+        msg = "width must be > 0"
+        self.assertEqual(str(e.exception), msg)
+
     def test_D_instantiation_positional(self):
         '''Tests positional instantiation.'''
         r = Square(5, 10, 15)
