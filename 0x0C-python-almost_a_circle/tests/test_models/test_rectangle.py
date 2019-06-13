@@ -69,6 +69,11 @@ given"
              '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 1}
         self.assertEqual(r.__dict__, d)
 
+        r = Rectangle(5, 10, 15, 20, 98)
+        d = {'_Rectangle__height': 10, '_Rectangle__width': 5,
+             '_Rectangle__x': 15, '_Rectangle__y': 20, 'id': 98}
+        self.assertEqual(r.__dict__, d)
+
     def test_D_instantiation_keyword(self):
         '''Tests positional instantiation.'''
         r = Rectangle(100, 200, id=421, y=99, x=101)
@@ -143,7 +148,7 @@ given"
         for attribute in attributes:
             s = "{} must be > 0".format(attribute)
             with self.assertRaises(ValueError) as e:
-                setattr(r, attribute, -(randrange(10) + 1))
+                setattr(r, attribute, 0)
             self.assertEqual(str(e.exception), s)
 
     def test_H_property(self):
