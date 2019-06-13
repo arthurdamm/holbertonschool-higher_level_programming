@@ -176,7 +176,7 @@ were given"
         '''Tests area() method compuation.'''
         r = Square(6)
         self.assertEqual(r.area(), 36)
-        w = randrange(10) + 1    
+        w = randrange(10) + 1
         r.size = w
         self.assertEqual(r.area(), w * w)
         w = randrange(10) + 1
@@ -453,6 +453,28 @@ were given"
 
         r.update(y=25, id=10, x=20, size=5)
         self.assertEqual(r.__dict__, d)
+
+    # ----------------- Tests for #14 ------------------------
+    def test_M_to_dictionary(self):
+        '''Tests to_dictionary() signature:'''
+        with self.assertRaises(TypeError) as e:
+            Square.to_dictionary()
+        s = "to_dictionary() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), s)
+
+        r = Square(1)
+        d = {'x': 0, 'y': 0, 'size': 1, 'id': 1}
+        self.assertEqual(r.to_dictionary(), d)
+
+        r = Square(9, 2, 3, 4)
+        d = {'x': 2, 'y': 3, 'size': 9, 'id': 4}
+        self.assertEqual(r.to_dictionary(), d)
+
+        r.x = 10
+        r.y = 20
+        r.size = 30
+        d = {'x': 10, 'y': 20, 'size': 30, 'id': 4}
+        self.assertEqual(r.to_dictionary(), d)
 
 if __name__ == "__main__":
     unittest.main()
