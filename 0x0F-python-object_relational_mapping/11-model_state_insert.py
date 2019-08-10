@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Return State object matching arg"""
+"""Adds a brand new State to the system!"""
 
 from sys import argv
 from model_state import Base, State
@@ -14,10 +14,8 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).\
-        filter(State.name == argv[4]).order_by(State.id).all()
-    if states:
-        print("{}".format(states[0].id))
-    else:
-        print("Not found")
+    new_state = State(name=argv[4])
+    session.add(new_state)
+    session.commit()
+    print(new_state.id)
     session.close()
