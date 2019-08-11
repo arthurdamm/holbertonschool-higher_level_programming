@@ -16,6 +16,6 @@ class State(Base):
     name = Column(String(128), nullable=False)
     cities = relationship(
         "City",
-        cascade="all, delete-orphan",
+        cascade="all, delete",
         backref=backref("state", cascade="all"),
         single_parent=True)
