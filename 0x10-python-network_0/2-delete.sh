@@ -1,3 +1,3 @@
 #!/bin/bash
 # send a particular thing
-curl -X "delete" "$1"
+curl -X "DELETE" "$1"
