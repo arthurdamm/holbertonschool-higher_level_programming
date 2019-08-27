@@ -4,16 +4,16 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    films = {}
-    r = requests.get("https://swapi.co/api/films/")
-    for result in r.json().get('results'):
-        films[result.get('url')] = result.get('title')
-    url = "http://swapi.co/api/people/"
-    params = {"search": argv[1]}
-    response = requests.get(url, params=params)
-    d = response.json()
-    print("Number of results:", d.get("count"))
     try:
+        films = {}
+        r = requests.get("https://swapi.co/api/films/")
+        for result in r.json().get('results'):
+            films[result.get('url')] = result.get('title')
+        url = "http://swapi.co/api/people/"
+        params = {"search": argv[1]}
+        response = requests.get(url, params=params)
+        d = response.json()
+        print("Number of results:", d.get("count"))
         while True:
             for result in d.get("results"):
                 print(result.get("name"))
