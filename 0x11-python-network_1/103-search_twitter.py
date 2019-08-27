@@ -6,6 +6,7 @@ import base64
 
 
 def doit(apikey, secretkey, search):
+    """Connects to Twitter, authenticates, and searches"""
     key = "{}:{}".format(apikey, secretkey).encode('ascii')
     key = base64.b64encode(key).decode('ascii')
     auth_headers = {
@@ -25,7 +26,7 @@ def doit(apikey, secretkey, search):
     search_data = {
         'q': search,
         'result_type': 'recent',
-        'count': 10
+        'count': 5
     }
     r = requests.get('https://api.twitter.com/1.1/search/tweets.json',
                      headers=search_headers, params=search_data)
