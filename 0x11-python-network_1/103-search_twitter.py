@@ -36,7 +36,7 @@ def doit(apikey, secretkey, search):
 
     for tweet in r.json().get('statuses'):
         print("[{}] {} by {}".format(tweet.get('id'), tweet.get('text'),
-                                     tweet.get('user').get('screen_name')))
+                                     tweet.get('user').get('name')))
     return r
 
 if __name__ == "__main__":
