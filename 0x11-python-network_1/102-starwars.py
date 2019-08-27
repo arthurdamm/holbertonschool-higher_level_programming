@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-""" Uses requests module. Prints error code"""
+"""Downloads SW user and film info"""
 import requests
 from sys import argv
 
 if __name__ == "__main__":
     try:
         films = {}
-        r = requests.get("https://swapi.co/api/films/")
-        for result in r.json().get('results'):
-            films[result.get('url')] = result.get('title')
+        try:
+            r = requests.get("https://swapi.co/api/films/")
+            for result in r.json().get('results'):
+                films[result.get('url')] = result.get('title')
+        except Exception:
+            pass
         url = "http://swapi.co/api/people/"
         params = {"search": argv[1]}
         response = requests.get(url, params=params)
@@ -26,3 +29,5 @@ if __name__ == "__main__":
                 break
     except ValueError:
         print("Not a valid JSON")
+    except Exception:
+        pass
