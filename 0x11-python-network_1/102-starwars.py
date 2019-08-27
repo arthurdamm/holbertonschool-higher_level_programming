@@ -14,14 +14,6 @@ if __name__ == "__main__":
          'https://swapi.co/api/films/4/': 'The Phantom Menace',
          'https://swapi.co/api/films/1/': 'A New Hope'
          }
-        """
-        try:
-            r = requests.get("https://swapi.co/api/films/")
-            for result in r.json().get('results'):
-                films[result.get('url')] = result.get('title')
-        except Exception:
-            pass
-        """
         url = "http://swapi.co/api/people/"
         params = {"search": argv[1]}
         response = requests.get(url, params=params)
@@ -31,7 +23,7 @@ if __name__ == "__main__":
             for result in d.get("results"):
                 print(result.get("name"))
                 for film in result.get('films'):
-                    print('\t', films.get(film))
+                    print('\t{}'.format(films.get(film)))
             if d.get('next'):
                 response = requests.get(d.get('next'))
                 d = response.json()
