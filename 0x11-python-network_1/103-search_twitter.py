@@ -31,9 +31,12 @@ def doit(apikey, secretkey, search):
     r = requests.get('https://api.twitter.com/1.1/search/tweets.json',
                      headers=search_headers, params=search_data)
 
+    if not r.json().get('statuses'):
+        return
+
     for tweet in r.json().get('statuses'):
         print("[{}] {} by {}".format(tweet.get('id'), tweet.get('text'),
-                                     tweet.get('user').get('name')))
+                                     tweet.get('user').get('screen_name')))
     return r
 
 if __name__ == "__main__":
