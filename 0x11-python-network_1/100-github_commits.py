@@ -10,5 +10,6 @@ if __name__ == "__main__":
     n = 0
     for i in r.json():
         if n < 10:
-            print("{}: {}".format(i.get("sha"), i.get("commit").get("author").get("name")))
+            print("{}: {}".format(i.get("sha"),
+                  i.get("commit").get("author").get("name")))
         n += 1
