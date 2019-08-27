@@ -26,7 +26,6 @@ def doit(apikey, secretkey, search):
         }
         search_data = {
             'q': search,
-            'count': 5
         }
         r = requests.get('https://api.twitter.com/1.1/search/tweets.json',
                          headers=search_headers, params=search_data)
@@ -34,10 +33,15 @@ def doit(apikey, secretkey, search):
         if not r.json().get('statuses'):
             return
 
+        n = 0
         for tweet in r.json().get('statuses'):
+            if n >= 5:
+                break
             try:
-                print("[{}] {} by {}".format(tweet.get('id'), tweet.get('text'),
+                print("[{}] {} by {}".format(tweet.get('id'),
+                                             tweet.get('text'),
                                              tweet.get('user').get('name')))
+                n += 1
             except Exception:
                 pass
         return r
