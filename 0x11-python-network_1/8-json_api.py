@@ -10,7 +10,8 @@ if __name__ == "__main__":
     try:
         d = response.json()
         if not d:
-            raise ValueError
-        print(d)
+            print("No result")
+        else:
+            print("[{}] {}".format(d.get("id"), d.get("name")))
     except ValueError:
-        print("No result")
+        print("Not a valid JSON")
