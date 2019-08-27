@@ -5,13 +5,23 @@ from sys import argv
 
 if __name__ == "__main__":
     try:
-        films = {}
+        films = {
+         'https://swapi.co/api/films/2/': 'The Empire Strikes Back',
+         'https://swapi.co/api/films/3/': 'Return of the Jedi',
+         'https://swapi.co/api/films/7/': 'The Force Awakens',
+         'https://swapi.co/api/films/5/': 'Attack of the Clones',
+         'https://swapi.co/api/films/6/': 'Revenge of the Sith',
+         'https://swapi.co/api/films/4/': 'The Phantom Menace',
+         'https://swapi.co/api/films/1/': 'A New Hope'
+         }
+        """
         try:
             r = requests.get("https://swapi.co/api/films/")
             for result in r.json().get('results'):
                 films[result.get('url')] = result.get('title')
         except Exception:
             pass
+        """
         url = "http://swapi.co/api/people/"
         params = {"search": argv[1]}
         response = requests.get(url, params=params)
