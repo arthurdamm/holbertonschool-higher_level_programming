@@ -25,7 +25,6 @@ def doit(apikey, secretkey, search):
     }
     search_data = {
         'q': search,
-        'result_type': 'recent',
         'count': 5
     }
     r = requests.get('https://api.twitter.com/1.1/search/tweets.json',
