@@ -1,5 +1,4 @@
+#!/usr/bin/node
 exports.addMeMaybe = function (number, theFunction) {
-  if (!isNaN(parseInt(number))) {
-    theFunction(number + 1);
-  }
+  theFunction(number + 1);
 };
