@@ -1,3 +1,5 @@
 exports.addMeMaybe = function (number, theFunction) {
-  theFunction(number + 1);
+  if (!isNaN(parseInt(number))) {
+    theFunction(number + 1);
+  }
 };
