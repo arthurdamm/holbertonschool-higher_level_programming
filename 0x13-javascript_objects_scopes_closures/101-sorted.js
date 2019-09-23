@@ -1,7 +1,6 @@
 #!/usr/bin/node
 const dict = require('./101-data').dict;
-const newDict = {};
-for (const [key, value] of Object.entries(dict)) {
-  newDict[value] = (newDict[value] || []).concat(key);
-}
-console.log(newDict);
+console.log(Object.entries(dict).reduce(function (accumulator, current) {
+  accumulator[current[1]] = (accumulator[current[1]] || []).concat(current[0]);
+  return accumulator;
+}, {}));
