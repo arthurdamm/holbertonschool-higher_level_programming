@@ -4,7 +4,6 @@ function searchRequest (apikey, secretkey, search) {
   const request = require('request');
   const base64 = require('base-64');
   const utf8 = require('utf8');
-  const util = require('util');
   const key = base64.encode(utf8.encode(apikey + ':' + secretkey));
 
   const authHeaders = {
@@ -36,8 +35,7 @@ function searchRequest (apikey, secretkey, search) {
           let i = 0;
           for (const tweet of JSON.parse(body).statuses) {
             if (++i <= 5) {
-              console.log(util.format('[%d] %s by %s',
-                tweet.id, tweet.text, tweet.user.name));
+              console.log(`[${tweet.id}] ${tweet.text} by ${tweet.user.name}`);
             }
           }
         }
