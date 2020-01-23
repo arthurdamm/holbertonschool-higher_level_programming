@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a program that parses logs"""
+"""This is just a document string"""
 
 
 import sys
@@ -25,4 +25,3 @@ except KeyboardInterrupt:
         if code in code_hist:
             print('{}: {}'.format(code, code_hist.count(code)))
     sys.exit()
-
