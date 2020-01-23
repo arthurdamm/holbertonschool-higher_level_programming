@@ -29,3 +29,7 @@ except KeyboardInterrupt:
         if code in code_hist:
             print('{}: {}'.format(code, code_hist.count(code)))
     sys.exit()
+print('File size: ' + str(total_size))
+for code in codes:
+    if code in code_hist:
+        print('{}: {}'.format(code, code_hist.count(code)))
